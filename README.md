@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 📊 Crypto Tracker
 
-Currently, two official plugins are available:
+Aplicação **React + TypeScript** que consome a API pública da **[CoinCap](https://coincap.io/)** para exibir informações atualizadas sobre criptomoedas.  
+O projeto inclui paginação, busca e página de detalhes de cada moeda.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🔍 Buscar moedas por nome ou símbolo  
+- 📈 Listar as principais criptomoedas em tempo real  
+- 💰 Exibir preço, valor de mercado, volume e variação nas últimas 24h  
+- 📄 Paginação (carregar mais resultados)  
+- 📑 Página de detalhes de cada moeda  
+- ✅ Formatação de valores em **USD** (compact e normal)  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tecnologias utilizadas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- ⚛️ [React](https://reactjs.org/) (biblioteca principal)  
+- 🟦 [TypeScript](https://www.typescriptlang.org/) (tipagem estática)  
+- 🌐 [React Router DOM](https://reactrouter.com/) (navegação entre páginas)  
+- 🎨 [CSS Modules](https://github.com/css-modules/css-modules) (estilização isolada)  
+- 🔎 [React Icons](https://react-icons.github.io/react-icons/) (ícones de busca)  
+- 📡 [CoinCap API](https://docs.coincap.io/) (dados em tempo real de criptomoedas)  
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ▶️ Como rodar o projeto localmente
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/crypto-tracker.git
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. Acesse a pasta do projeto:
+   ```bash
+   cd crypto-tracker
+
+3. Instale as dependências::
+   ```bash
+    npm install
+   
+4. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+
+5. Abra no navegador:
+   ```bash
+   http://localhost:5173
+  
+ ## 📸 Pré-visualização 
+   
+
+
+
