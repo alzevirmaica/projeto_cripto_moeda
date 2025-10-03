@@ -55,5 +55,11 @@ O projeto inclui paginação, busca e página de detalhes de cada moeda.
  ## 📸 Pré-visualização 
    
 
+<img width="1374" height="938" alt="Captura de tela de 2025-10-03 15-12-32" src="https://github.com/user-attachments/assets/c6e0b17a-ea30-4944-a674-00e2caa681bf" />
+<img width="773" height="938" alt="Captura de tela de 2025-10-03 15-12-54" src="https://github.com/user-attachments/assets/3387e524-53c2-4639-b595-a72244033fe2" />
+
+<img width="465" height="811" alt="Captura de tela de 2025-10-03 15-13-14" src="https://github.com/user-attachments/assets/4efc010c-c594-4514-ab56-f306c038338b" />
+
+
 
 
