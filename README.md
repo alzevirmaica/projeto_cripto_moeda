@@ -1,5 +1,5 @@
 
-# 📊 Crypto Tracker
+# 📊 Dev currency
 
 Aplicação **React + TypeScript** que consome a API pública da **[CoinCap](https://coincap.io/)** para exibir informações atualizadas sobre criptomoedas.  
 O projeto inclui paginação, busca e página de detalhes de cada moeda.
@@ -34,7 +34,7 @@ O projeto inclui paginação, busca e página de detalhes de cada moeda.
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/seu-usuario/crypto-tracker.git
+   git clone https://github.com/alzevirmaica/projeto_cripto_moeda.git
 
 2. Acesse a pasta do projeto:
    ```bash
