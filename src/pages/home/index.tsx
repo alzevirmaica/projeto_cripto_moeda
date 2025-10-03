@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import type { FormEvent } from "react";
 
-interface CoinProps {
+export interface CoinProps {
   id: string;
   name: string;
   symbol: string;
