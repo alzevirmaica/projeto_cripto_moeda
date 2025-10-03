@@ -14,9 +14,12 @@ interface CoinProps {
   rank: string;
   supply: string;
   maxSupply: string;
-  marketCaUsd: string;
+  marketCapUsd: string;
   volumeUsd24Hr: string;
   explorer: string;
+  formatedPrice?: string;
+  formatedMarket?: string;
+  formatedVolume?: string;
 }
 
 interface dataProp {
@@ -25,15 +28,16 @@ interface dataProp {
 
 function Home() {
   const [input, setInput] = useState("");
-  const [coins, setcoins] = useState<CoinProps[]>([]);
+  const [coins, setCoins] = useState<CoinProps[]>([]);
+  const [offset, setOffset] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [offset]);
 
   async function getData() {
-    fetch("https://rest.coincap.io/v3/assets?limit=10&offset=0", {
+    fetch(`https://rest.coincap.io/v3/assets?limit=10&offset=${offset}`, {
       headers: {
         Authorization:
           "Bearer 5649947b97ae6e773ac165d316c95ace1ff39dabdadd2f3d0ef602e66ca8a0f1",
@@ -47,15 +51,24 @@ function Home() {
           style: "currency",
           currency: "USd",
         });
+
+        const priceCompact = Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USd",
+          notation: "compact",
+        });
         const formatedResult = coinsData.map((item) => {
           const formated = {
             ...item,
             formatedPrice: price.format(Number(item.priceUsd)),
+            formatedMarket: priceCompact.format(Number(item.marketCapUsd)),
+            formatedVolume: priceCompact.format(Number(item.volumeUsd24Hr)),
           };
           return formated;
         });
 
-        console.log(formatedResult);
+        const listCoins = [...coins, ...formatedResult];
+        setCoins(listCoins);
       });
   }
 
@@ -67,7 +80,12 @@ function Home() {
   }
 
   function handleGetMore() {
-    alert("teste");
+    if (offset === 0) {
+      setOffset(10);
+      return;
+    }
+
+    setOffset(offset + 10);
   }
 
   return (
@@ -96,31 +114,47 @@ function Home() {
         </thead>
 
         <tbody id="tbody">
-          <tr className={styles.tr}>
-            <td className={styles.tdlabel} data-label="Moeda">
-              <div className={styles.name}>
-                <Link to={"/detail/bitcoin"}>
-                  <span>Bitcoin</span> | BTC
-                </Link>
-              </div>
-            </td>
+          {coins.length > 0 &&
+            coins.map((item) => (
+              <tr className={styles.tr} key={item.id}>
+                <td className={styles.tdlabel} data-label="Moeda">
+                  <div className={styles.name}>
+                    <img
+                      className={styles.logo}
+                      src={`https://assets.coincap.io/assets/icons/${item.symbol.toLowerCase()}@2x.png`}
+                      alt="logo vrito"
+                    ></img>
+                    <Link to={`/detail/${item.id}`}>
+                      <span className={styles.title}>{item.name}</span> |{" "}
+                      {item.symbol}
+                    </Link>
+                  </div>
+                </td>
 
-            <td className={styles.tdlabel} data-label="valor mercado">
-              1T
-            </td>
+                <td className={styles.tdlabel} data-label="valor mercado">
+                  {item.formatedMarket}
+                </td>
 
-            <td className={styles.tdlabel} data-label="Preço">
-              8.000
-            </td>
+                <td className={styles.tdlabel} data-label="Preço">
+                  {item.formatedPrice}
+                </td>
 
-            <td className={styles.tdlabel} data-label="Volume">
-              2B
-            </td>
+                <td className={styles.tdlabel} data-label="Volume">
+                  {item.formatedVolume}
+                </td>
 
-            <td className={styles.tdProfit} data-label="Mudança 24h">
-              <span>1.20</span>
-            </td>
-          </tr>
+                <td
+                  className={
+                    Number(item.changePercent24Hr) > 0
+                      ? styles.tdProfit
+                      : styles.tdLoss
+                  }
+                  data-label="Mudança 24h"
+                >
+                  <span>{Number(item.changePercent24Hr).toFixed(3)}</span>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
 
