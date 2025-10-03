@@ -1,5 +1,5 @@
 
-# 📊 Dev currency
+# 📊 Dev Currency
 
 Aplicação **React + TypeScript** que consome a API pública da **[CoinCap](https://coincap.io/)** para exibir informações atualizadas sobre criptomoedas.  
 O projeto inclui paginação, busca e página de detalhes de cada moeda.
